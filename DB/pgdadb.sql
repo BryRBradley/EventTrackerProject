@@ -23,42 +23,15 @@ DROP TABLE IF EXISTS `pgda_score` ;
 CREATE TABLE IF NOT EXISTS `pgda_score` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `score` INT NULL,
-  `playerName` VARCHAR(75) NULL,
-  `tounamentName` VARCHAR(75) NULL,
-  `tournamentDate` DATETIME NULL,
+  `player_name` VARCHAR(75) NULL,
+  `tournament_name` VARCHAR(75) NULL,
+  `tournament_date` DATETIME NULL,
   `league` VARCHAR(45) NULL,
-  `tournamentResult` VARCHAR(45) NULL,
-  `nationalRanking` VARCHAR(45) NULL,
+  `tournament_result` INT NULL,
+  `national_ranking` INT NULL,
   PRIMARY KEY (`id`),
-  UNIQUE INDEX `player_name_UNIQUE` (`playerName` ASC))
+  UNIQUE INDEX `player_name_UNIQUE` (`player_name` ASC))
 ENGINE = InnoDB;
-
-USE `pgdadb` ;
-
--- -----------------------------------------------------
--- Placeholder table for view `view1`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `view1` (`id` INT);
-
--- -----------------------------------------------------
--- Placeholder table for view `view2`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `view2` (`id` INT);
-
--- -----------------------------------------------------
--- View `view1`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `view1`;
-DROP VIEW IF EXISTS `view1` ;
-USE `pgdadb`;
-
-
--- -----------------------------------------------------
--- View `view2`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `view2`;
-DROP VIEW IF EXISTS `view2` ;
-USE `pgdadb`;
 
 SET SQL_MODE = '';
 DROP USER IF EXISTS PGDAAdmin@localhost;
@@ -76,17 +49,17 @@ SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `pgdadb`;
-INSERT INTO `pgda_score` (`id`, `score`, `playerName`, `tounamentName`, `tournamentDate`, `league`, `tournamentResult`, `nationalRanking`) VALUES (1, 56, 'Calvin Heimburg', 'Music City Open', '2024/04/19', 'MPO', '-23', '7');
-INSERT INTO `pgda_score` (`id`, `score`, `playerName`, `tounamentName`, `tournamentDate`, `league`, `tournamentResult`, `nationalRanking`) VALUES (DEFAULT, 57, 'Gannon Buhr', 'Music City Open', '2024/04/19', 'MPO', '-21', '2');
-INSERT INTO `pgda_score` (`id`, `score`, `playerName`, `tounamentName`, `tournamentDate`, `league`, `tournamentResult`, `nationalRanking`) VALUES (DEFAULT, 54, 'Richard Wysocki', 'Music City Open', '2024/04/19', 'MPO', '-22', '4');
-INSERT INTO `pgda_score` (`id`, `score`, `playerName`, `tounamentName`, `tournamentDate`, `league`, `tournamentResult`, `nationalRanking`) VALUES (DEFAULT, 58, 'Niklas Anttila', 'Music City Open', '2024/04/19', 'MPO', '-26', '3');
-INSERT INTO `pgda_score` (`id`, `score`, `playerName`, `tounamentName`, `tournamentDate`, `league`, `tournamentResult`, `nationalRanking`) VALUES (DEFAULT, 53, 'Simon Lizotte', 'Music City Open', '2024/04/19', 'MPO', '-30 ', '16');
-INSERT INTO `pgda_score` (`id`, `score`, `playerName`, `tounamentName`, `tournamentDate`, `league`, `tournamentResult`, `nationalRanking`) VALUES (DEFAULT, 54, 'Anthony Barrela', 'Music City Open', '2024/04/19', 'MPO', '-28', '1');
-INSERT INTO `pgda_score` (`id`, `score`, `playerName`, `tounamentName`, `tournamentDate`, `league`, `tournamentResult`, `nationalRanking`) VALUES (DEFAULT, 71, 'Kriston Tattar', 'Music City Open', '2024/04/19', 'FPO', '-12', '2');
-INSERT INTO `pgda_score` (`id`, `score`, `playerName`, `tounamentName`, `tournamentDate`, `league`, `tournamentResult`, `nationalRanking`) VALUES (DEFAULT, 73, 'Evaliina Salonen', 'Music City Open', '2024/04/19', 'FPO', '-10', '1');
-INSERT INTO `pgda_score` (`id`, `score`, `playerName`, `tounamentName`, `tournamentDate`, `league`, `tournamentResult`, `nationalRanking`) VALUES (DEFAULT, 75, 'Ohn Scoggins', 'Music City Open', '2024/04/19', 'FPO', '-9', '3');
-INSERT INTO `pgda_score` (`id`, `score`, `playerName`, `tounamentName`, `tournamentDate`, `league`, `tournamentResult`, `nationalRanking`) VALUES (DEFAULT, 76, 'Holyn Handley', 'Music City Open', '2024/04/19', 'FPO', '-6', '4');
-INSERT INTO `pgda_score` (`id`, `score`, `playerName`, `tounamentName`, `tournamentDate`, `league`, `tournamentResult`, `nationalRanking`) VALUES (DEFAULT, 79, 'Missy Gannon', 'Music City Open', '2024/04/19', 'FPO', '-4', '5');
+INSERT INTO `pgda_score` (`id`, `score`, `player_name`, `tournament_name`, `tournament_date`, `league`, `tournament_result`, `national_ranking`) VALUES (1, 56, 'Calvin Heimburg', 'Music City Open', '2024/04/19', 'MPO', -23, 7);
+INSERT INTO `pgda_score` (`id`, `score`, `player_name`, `tournament_name`, `tournament_date`, `league`, `tournament_result`, `national_ranking`) VALUES (DEFAULT, 57, 'Gannon Buhr', 'Music City Open', '2024/04/19', 'MPO', -21, 2);
+INSERT INTO `pgda_score` (`id`, `score`, `player_name`, `tournament_name`, `tournament_date`, `league`, `tournament_result`, `national_ranking`) VALUES (DEFAULT, 54, 'Richard Wysocki', 'Music City Open', '2024/04/19', 'MPO', -22, 4);
+INSERT INTO `pgda_score` (`id`, `score`, `player_name`, `tournament_name`, `tournament_date`, `league`, `tournament_result`, `national_ranking`) VALUES (DEFAULT, 58, 'Niklas Anttila', 'Music City Open', '2024/04/19', 'MPO', -26, 3);
+INSERT INTO `pgda_score` (`id`, `score`, `player_name`, `tournament_name`, `tournament_date`, `league`, `tournament_result`, `national_ranking`) VALUES (DEFAULT, 53, 'Simon Lizotte', 'Music City Open', '2024/04/19', 'MPO', -30 , 16);
+INSERT INTO `pgda_score` (`id`, `score`, `player_name`, `tournament_name`, `tournament_date`, `league`, `tournament_result`, `national_ranking`) VALUES (DEFAULT, 54, 'Anthony Barrela', 'Music City Open', '2024/04/19', 'MPO', -28, 1);
+INSERT INTO `pgda_score` (`id`, `score`, `player_name`, `tournament_name`, `tournament_date`, `league`, `tournament_result`, `national_ranking`) VALUES (DEFAULT, 71, 'Kriston Tattar', 'Music City Open', '2024/04/19', 'FPO', -12, 2);
+INSERT INTO `pgda_score` (`id`, `score`, `player_name`, `tournament_name`, `tournament_date`, `league`, `tournament_result`, `national_ranking`) VALUES (DEFAULT, 73, 'Evaliina Salonen', 'Music City Open', '2024/04/19', 'FPO', -10, 1);
+INSERT INTO `pgda_score` (`id`, `score`, `player_name`, `tournament_name`, `tournament_date`, `league`, `tournament_result`, `national_ranking`) VALUES (DEFAULT, 75, 'Ohn Scoggins', 'Music City Open', '2024/04/19', 'FPO', -9, 3);
+INSERT INTO `pgda_score` (`id`, `score`, `player_name`, `tournament_name`, `tournament_date`, `league`, `tournament_result`, `national_ranking`) VALUES (DEFAULT, 76, 'Holyn Handley', 'Music City Open', '2024/04/19', 'FPO', -6, 4);
+INSERT INTO `pgda_score` (`id`, `score`, `player_name`, `tournament_name`, `tournament_date`, `league`, `tournament_result`, `national_ranking`) VALUES (DEFAULT, 79, 'Missy Gannon', 'Music City Open', '2024/04/19', 'FPO', -4, 5);
 
 COMMIT;
 

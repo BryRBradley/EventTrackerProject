@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -26,7 +27,6 @@ public class PGDAScoreController {
 	
 	@GetMapping("pgdaScores")
 	public List<PGDAScore> findAll() {
-
 		return pgdaScoreService.findAll();
 		
 	}
@@ -39,16 +39,17 @@ public class PGDAScoreController {
 	
 	@PostMapping("pgdaScores")
 	public PGDAScore create(@RequestBody PGDAScore pgdaScore) {
-		return pgdaScoreService.create(pgdaScore);
+		PGDAScore newpgdaScore = pgdaScoreService.create(pgdaScore);
+		return newpgdaScore;
 		
 	}
-	@PostMapping("pgdaScores/{id}")
-	public PGDAScore update(@RequestBody PGDAScore pgdaScore, @RequestBody int id ) {
+	@PutMapping("pgdaScores/{id}")
+	public PGDAScore update(@RequestBody PGDAScore pgdaScore, @PathVariable("id") int id ) {
 		return pgdaScoreService.update(pgdaScore, id);
 	
 	}
 	
-	@DeleteMapping("pgdaScores")
+	@DeleteMapping("pgdaScores/{id}")
 	public void delete(@PathVariable("id") int id) {
 		 pgdaScoreService.delete(id);
 		

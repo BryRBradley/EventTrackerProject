@@ -20,17 +20,17 @@ public class PGDAScore {
 	
 	@Column (name="score")
 	private int score;
-	@Column (name="playerName")
+	@Column (name="player_name")
 	private String playerName;
-	@Column (name="tournamentName")
+	@Column (name="tournament_name")
 	private String tournamentName;
-	@Column (name="tournamentDate")
+	@Column (name="tournament_date")
 	private LocalDate tournamentDate;
 	@Column (name="league")
 	private String league;
-	@Column (name="tournamentResult")
+	@Column (name="tournament_result")
 	private int tournamentResult;
-	@Column (name="nationalRanking")
+	@Column (name="national_ranking")
 	private int nationalRanking;
 	
 	public PGDAScore() {

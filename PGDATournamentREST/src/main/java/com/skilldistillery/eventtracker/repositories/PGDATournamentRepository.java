@@ -10,4 +10,5 @@ public interface PGDATournamentRepository extends JpaRepository <PGDAScore, Inte
 
 	List <PGDAScore> findAll ();
 	List<PGDAScore> findByLeague(String league);
+	
 }

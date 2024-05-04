@@ -3,6 +3,7 @@ package com.skilldistillery.eventtracker.services;
 import java.util.List;
 import java.util.Optional;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.skilldistillery.eventtracker.entities.PGDAScore;
@@ -11,8 +12,8 @@ import com.skilldistillery.eventtracker.repositories.PGDATournamentRepository;
 @Service
 public class PGDAScoreServiceImpl implements PGDAScoreService {
 
+	@Autowired
 	private PGDATournamentRepository pgdaTournamentRepo;
-	private PGDAScoreService  pgdaScoreService;
 	
 	public PGDAScoreServiceImpl(PGDATournamentRepository pgdaTournamentRepo) {
 		super();
@@ -41,7 +42,7 @@ public class PGDAScoreServiceImpl implements PGDAScoreService {
 
 	@Override
 	public PGDAScore create(PGDAScore pgdaScore) {
-		return pgdaTournamentRepo.saveAndFlush(pgdaScore);
+		return pgdaTournamentRepo.save(pgdaScore);
 	}
 	
 	@Override
@@ -56,7 +57,7 @@ public class PGDAScoreServiceImpl implements PGDAScoreService {
 			foundScore.setLeague(pgdaScore.getLeague());
 			foundScore.setTournamentResult(pgdaScore.getTournamentResult());
 			foundScore.setNationalRanking(pgdaScore.getNationalRanking());
-			pgdaTournamentRepo.saveAndFlush(foundScore);
+			pgdaTournamentRepo.save(foundScore);
 		}
 		return foundScore;
 	}
@@ -68,4 +69,5 @@ public class PGDAScoreServiceImpl implements PGDAScoreService {
 	}
 }
 }
+	
 
