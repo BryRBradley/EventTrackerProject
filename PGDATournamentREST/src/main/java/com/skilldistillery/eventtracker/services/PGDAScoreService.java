@@ -7,6 +7,18 @@ import com.skilldistillery.eventtracker.entities.PGDAScore;
 public interface PGDAScoreService {
 	
 	PGDAScore findById(int id);
-	List <PGDAScore> findAll ();
+
+	PGDAScore create(PGDAScore pgdaScore);
+	
+	PGDAScore update(PGDAScore pgdaScore, int id);
+
+	void delete(int id);
+
+	List<PGDAScore> findAll();
+
+	List<PGDAScore> findByLeague(String league);
+
 
 }
+
+

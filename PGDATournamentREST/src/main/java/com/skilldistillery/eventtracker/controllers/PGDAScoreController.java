@@ -1,8 +1,16 @@
 package com.skilldistillery.eventtracker.controllers;
 
+import java.util.List;
+
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.skilldistillery.eventtracker.entities.PGDAScore;
 import com.skilldistillery.eventtracker.services.PGDAScoreService;
 
 @RestController
@@ -16,9 +24,34 @@ public class PGDAScoreController {
 		this.pgdaScoreService = pgdaScoreService;
 	}
 	
-	@GetMapping("ping")
-	public String ping() {
-		return "pong";
+	@GetMapping("pgdaScores")
+	public List<PGDAScore> findAll() {
+
+		return pgdaScoreService.findAll();
 		
 	}
-}
+
+	@GetMapping("pgdaScores/{id}")
+	public PGDAScore findById(@PathVariable("id") int id) {
+		return pgdaScoreService.findById(id);
+		
+	}
+	
+	@PostMapping("pgdaScores")
+	public PGDAScore create(@RequestBody PGDAScore pgdaScore) {
+		return pgdaScoreService.create(pgdaScore);
+		
+	}
+	@PostMapping("pgdaScores/{id}")
+	public PGDAScore update(@RequestBody PGDAScore pgdaScore, @RequestBody int id ) {
+		return pgdaScoreService.update(pgdaScore, id);
+	
+	}
+	
+	@DeleteMapping("pgdaScores")
+	public void delete(@PathVariable("id") int id) {
+		 pgdaScoreService.delete(id);
+		
+	}
+	
+	}
