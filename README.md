@@ -31,6 +31,8 @@ PGDAScore        Post api/pgdaScores         Create
 PGDAScore        Put api/pgdaScores/{id}     Update 
 PGDAScore        Get api/pgdaScores/{id}     Delete
 
+http://3.133.228.196:8080/PGDATournamentREST
+
 ## Project Goals
 
 - Basic CRUD verified through Postman. 
