@@ -23,6 +23,17 @@ Chrome browser
 MySQL Workbench
 Languages: Java, MYSQL, Groovy
 
+## Example Routes 
+PGDAScore  
+List<PGDAScore>  Get api/pgdaScores          Get all
+PGDAScore        Get api/pgdaScores/{id}     Get by id 
+PGDAScore        Post api/pgdaScores         Create
+PGDAScore        Put api/pgdaScores/{id}     Update 
+PGDAScore        Get api/pgdaScores/{id}     Delete
+
+
+
+
 ## Project Goals
 
 - Basic CRUD verified through Postman. 
