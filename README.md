@@ -31,9 +31,6 @@ PGDAScore        Post api/pgdaScores         Create
 PGDAScore        Put api/pgdaScores/{id}     Update 
 PGDAScore        Get api/pgdaScores/{id}     Delete
 
-
-
-
 ## Project Goals
 
 - Basic CRUD verified through Postman. 
