@@ -14,7 +14,7 @@ public class PGDAScoreServiceImpl implements PGDAScoreService {
 
 	@Autowired
 	private PGDATournamentRepository pgdaTournamentRepo;
-	
+
 	public PGDAScoreServiceImpl(PGDATournamentRepository pgdaTournamentRepo) {
 		super();
 		this.pgdaTournamentRepo = pgdaTournamentRepo;
@@ -27,7 +27,7 @@ public class PGDAScoreServiceImpl implements PGDAScoreService {
 			foundScore = scoreOptional.get();
 		}
 		return foundScore;
-	
+
 	}
 
 	@Override
@@ -44,11 +44,11 @@ public class PGDAScoreServiceImpl implements PGDAScoreService {
 	public PGDAScore create(PGDAScore pgdaScore) {
 		return pgdaTournamentRepo.save(pgdaScore);
 	}
-	
+
 	@Override
 	public PGDAScore update(PGDAScore pgdaScore, int id) {
-			Optional<PGDAScore> scoreOptional = pgdaTournamentRepo.findById(id);
-			PGDAScore foundScore = scoreOptional.get();
+		Optional<PGDAScore> scoreOptional = pgdaTournamentRepo.findById(id);
+		PGDAScore foundScore = scoreOptional.get();
 		if (scoreOptional.isPresent()) {
 			foundScore.setScore(pgdaScore.getScore());
 			foundScore.setPlayerName(pgdaScore.getPlayerName());
@@ -61,13 +61,18 @@ public class PGDAScoreServiceImpl implements PGDAScoreService {
 		}
 		return foundScore;
 	}
-	
+
 	@Override
 	public void delete(int id) {
 		if (pgdaTournamentRepo.existsById(id)) {
-			pgdaTournamentRepo.deleteById(id);
+			pgdaTournamentRepo.deleteById(id); 
+			}
+		}
+	@Override
+	public List<PGDAScore> findByPlayerName(String name) {
+		
+		return pgdaTournamentRepo.findByPlayerName(name);
 	}
-}
-}
 	
-
+	
+}

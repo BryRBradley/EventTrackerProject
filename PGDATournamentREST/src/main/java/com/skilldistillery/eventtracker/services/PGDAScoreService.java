@@ -16,8 +16,9 @@ public interface PGDAScoreService {
 
 	List<PGDAScore> findAll();
 
-	List<PGDAScore> findByLeague(String league);
+	List<PGDAScore> findByPlayerName(String name);
 
+	List<PGDAScore> findByLeague(String league);
 
 }
 

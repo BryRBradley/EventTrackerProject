@@ -55,4 +55,15 @@ public class PGDAScoreController {
 		
 	}
 	
+	@GetMapping("pgdaScores/playerName/{name}")
+	public List<PGDAScore> findByPlayerName(@PathVariable("name") String name) {
+	    return pgdaScoreService.findByPlayerName(name);
+	}
+
+	@GetMapping("pgdaScores/league/{league}")
+	public List<PGDAScore> findByLeague(@PathVariable("league") String league) {
+	    return pgdaScoreService.findByLeague(league);
+	}
+
+	
 	}
