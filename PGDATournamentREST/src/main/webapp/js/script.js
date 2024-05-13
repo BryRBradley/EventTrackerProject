@@ -49,25 +49,33 @@ window.addEventListener('load', function() {
 		});
 	}
 
-	document.querySelector('#createForm').addEventListener('submit', function(event) {
-		event.preventDefault();
-		let formData = new FormData(this);
-		let json = {};
-		formData.forEach(function(value, key) {
-			json[key] = value;
-		});
+document.querySelector('#createForm').addEventListener('submit', function(event) {
+    event.preventDefault();
+    let form = this;
 
-		let xhr = new XMLHttpRequest();
-		xhr.open('POST', baseUrl);
-		xhr.setRequestHeader('Content-Type', 'application/json');
-		xhr.onreadystatechange = function() {
-			if (xhr.readyState === 4 && xhr.status === 200) {
-				getAllEvents();
-				this.reset();
-			}
-		};
-		xhr.send(JSON.stringify(json));
-	});
+    let formData = new FormData(form);
+    let json = {
+        "score": formData.get("score"),
+        "playerName": formData.get("player_name"),
+        "tournamentName": formData.get("tournament_name"),
+        "tournamentDate": formData.get("tournament_date"),
+        "league": formData.get("league"),
+        "tournamentResult": formData.get("tournament_result"),
+        "nationalRanking": formData.get("national_ranking")
+    };
+
+    let xhr = new XMLHttpRequest();
+    xhr.open('POST', baseUrl);
+    xhr.setRequestHeader('Content-Type', 'application/json');
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState === 4 && xhr.status === 200) {
+            getAllEvents();
+            form.reset();
+        }
+    };
+    xhr.send(JSON.stringify(json));
+});
+
 
 	function updateEvent(eventId, updatedEvent) {
 		let xhr = new XMLHttpRequest();
