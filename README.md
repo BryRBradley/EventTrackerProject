@@ -61,8 +61,8 @@ Starting with entities to services then finally controllers is my preference flo
 
 ## Screen shots of Code
 XHR for the information for my Table. 
-![XHR](webapp/coe1.png)
+![XHR](EventTrackerProject/PGDATournamentREST/src/main/webapp/coe1.png)
 
 
-
-![Frontend final](webapp/coe2.png)
+Screen shot of the finished front end.
+![Frontend final](EventTrackerProject/PGDATournamentREST/src/main/webapp/coe2.png)
