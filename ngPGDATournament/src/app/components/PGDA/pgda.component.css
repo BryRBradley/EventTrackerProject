@@ -1,0 +1,36 @@
+:host {
+    display: block;
+    background-image: url('/assets/grass.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    min-height: 100vh; /* Ensures the background covers the full height of the viewport */
+  }
+  
+  .container-fluid, .container {
+    background: rgba(255, 255, 255, 0.8); /* Add a semi-transparent background to make text readable */
+    border-radius: 10px;
+    padding: 20px;
+  }
+
+  .close-btn {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #000;
+    background: none;
+    border: none;
+    cursor: pointer;
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 0.5rem;
+  }
+  
+  .close-btn:hover {
+    color: #ff0000;
+  }
+  
+  .modal-header {
+    position: relative;
+  }
+  

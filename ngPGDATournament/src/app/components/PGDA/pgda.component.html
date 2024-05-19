@@ -1,99 +1,114 @@
+<div class="container-fluid bg-primary py-3 mb-4">
+  <h1 class="text-center text-dark display-1">PDGA Tournament</h1>
+  <img src="assets/pdga_logo_og-image.png" alt="PGDA Logo" class="img-fluid mx-auto d-block" style="max-width: 200px;">
+</div>
+<div class="container mt-5">
+  <table id="eventTable" class="table mt-3">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Score</th>
+        <th>Player Name</th>
+        <th>Tournament Name</th>
+        <th>Tournament Date</th>
+        <th>League</th>
+        <th>Tournament Result</th>
+        <th>National Ranking</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let score of scores">
+        <td>{{ score.id }}</td>
+        <td>{{ score.score }}</td>
+        <td>{{ score.playerName }}</td>
+        <td>{{ score.tournamentName }}</td>
+        <td>{{ score.tournamentDate | date }}</td>
+        <td>{{ score.league }}</td>
+        <td>{{ score.tournamentResult }}</td>
+        <td>{{ score.nationalRanking }}</td>
+        <td>
+          <button class="btn btn-sm btn-warning" (click)="edit(score)">Edit</button>
+          <button class="btn btn-sm btn-danger" (click)="deleteScore(score.id)">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
 
+  <form (ngSubmit)="addScore()">
+    <div class="mb-3">
+      <label for="score" class="form-label">Score:</label>
+      <input type="number" class="form-control" id="score" [(ngModel)]="newScore.score" name="score" required>
+    </div>
+    <div class="mb-3">
+      <label for="player_name" class="form-label">Player Name:</label>
+      <input type="text" class="form-control" id="player_name" [(ngModel)]="newScore.playerName" name="player_name" required>
+    </div>
+    <div class="mb-3">
+      <label for="tournament_name" class="form-label">Tournament Name:</label>
+      <input type="text" class="form-control" id="tournament_name" [(ngModel)]="newScore.tournamentName" name="tournament_name" required>
+    </div>
+    <div class="mb-3">
+      <label for="tournament_date" class="form-label">Tournament Date:</label>
+      <input type="date" class="form-control" id="tournament_date" [(ngModel)]="newScore.tournamentDate" name="tournament_date" required>
+    </div>
+    <div class="mb-3">
+      <label for="league" class="form-label">League:</label>
+      <input type="text" class="form-control" id="league" [(ngModel)]="newScore.league" name="league" required>
+    </div>
+    <div class="mb-3">
+      <label for="tournament_result" class="form-label">Tournament Result:</label>
+      <input type="number" class="form-control" id="tournament_result" [(ngModel)]="newScore.tournamentResult" name="tournament_result" required>
+    </div>
+    <div class="mb-3">
+      <label for="national_ranking" class="form-label">National Ranking:</label>
+      <input type="number" class="form-control" id="national_ranking" [(ngModel)]="newScore.nationalRanking" name="national_ranking" required>
+    </div>
+    <button type="submit" class="btn btn-primary">Create Event</button>
+  </form>
 
-    <h1 class="text-center text-dark display-1">PDGA Tournament</h1>
-  <div class="container mt-5">
-    <table id="eventTable" class="table mt-3">
-      <thead>
-        <tr>
-          <th>ID</th>
-          <th>Score</th>
-          <th>Player Name</th>
-          <th>Tournament Name</th>
-          <th>Tournament Date</th>
-          <th>League</th>
-          <th>Tournament Result</th>
-          <th>National Ranking</th>
-          <th>Action</th>
-        </tr>
-      </thead>
-      <tbody>
-      </tbody>
-    </table>
-  
-    <form id="createForm">
-      <div class="mb-3">
-        <label for="score" class="form-label">Score:</label>
-        <input type="text" class="form-control" id="score" name="score" required>
-      </div>
-      <div class="mb-3">
-        <label for="player_name" class="form-label">Player Name:</label>
-        <input type="text" class="form-control" id="player_name" name="player_name" required>
-      </div>
-      <div class="mb-3">
-        <label for="tournament_name" class="form-label">Tournament Name:</label>
-        <input type="text" class="form-control" id="tournament_name" name="tournament_name" required>
-      </div>
-      <div class="mb-3">
-        <label for="tournament_date" class="form-label">Tournament Date:</label>
-        <input type="date" class="form-control" id="tournament_date" name="tournament_date" required>
-      </div>
-      <div class="mb-3">
-        <label for="league" class="form-label">League:</label>
-        <input type="text" class="form-control" id="league" name="league" required>
-      </div>
-      <div class="mb-3">
-        <label for="tournament_result" class="form-label">Tournament Result:</label>
-        <input type="number" class="form-control" id="tournament_result" name="tournament_result" required>
-      </div>
-      <div class="mb-3">
-        <label for="national_ranking" class="form-label">National Ranking:</label>
-        <input type="number" class="form-control" id="national_ranking" name="national_ranking" required>
-      </div>
-      <button type="submit" class="btn btn-primary">Create Event</button>
-    </form>
-  
-    <div id="editModal" class="modal">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title">Edit Event</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
-          <div class="modal-body">
-            <form id="editForm">
-              <div class="mb-3">
-                <label for="editScore" class="form-label">Score:</label>
-                <input type="text" class="form-control" id="editScore" name="editScore" required>
-              </div>
-              <div class="mb-3">
-                <label for="editPlayerName" class="form-label">Player Name:</label>
-                <input type="text" class="form-control" id="editPlayerName" name="editPlayerName" required>
-              </div>
-              <div class="mb-3">
-                <label for="editTournamentName" class="form-label">Tournament Name:</label>
-                <input type="text" class="form-control" id="editTournamentName" name="editTournamentName" required>
-              </div>
-              <div class="mb-3">
-                <label for="editTournamentDate" class="form-label">Tournament Date:</label>
-                <input type="date" class="form-control" id="editTournamentDate" name="editTournamentDate" required>
-              </div>
-              <div class="mb-3">
-                <label for="editLeague" class="form-label">League:</label>
-                <input type="text" class="form-control" id="editLeague" name="editLeague" required>
-              </div>
-              <div class="mb-3">
-                <label for="editTournamentResult" class="form-label">Tournament Result:</label>
-                <input type="number" class="form-control" id="editTournamentResult" name="editTournamentResult" required>
-              </div>
-              <div class="mb-3">
-                <label for="editNationalRanking" class="form-label">National Ranking:</label>
-                <input type="number" class="form-control" id="editNationalRanking" name="editNationalRanking" required>
-              </div>
-              <button type="submit" class="btn btn-primary">Update Event</button>
-            </form>
-          </div>
+  <!-- Edit Modal -->
+  <div *ngIf="showModal" class="modal fade show d-block" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true" style="background-color: rgba(0,0,0,0.5);">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="editModalLabel">Edit Event</h5>
+          <button type="button" class="close-btn" (click)="closeModal()" aria-label="Close">&times;</button>
+        </div>
+        <div class="modal-body">
+          <form (ngSubmit)="updateScore()">
+            <div class="mb-3">
+              <label for="edit_score" class="form-label">Score:</label>
+              <input type="number" class="form-control" id="edit_score" [(ngModel)]="editScore.score" name="edit_score" required>
+            </div>
+            <div class="mb-3">
+              <label for="edit_player_name" class="form-label">Player Name:</label>
+              <input type="text" class="form-control" id="edit_player_name" [(ngModel)]="editScore.playerName" name="edit_player_name" required>
+            </div>
+            <div class="mb-3">
+              <label for="edit_tournament_name" class="form-label">Tournament Name:</label>
+              <input type="text" class="form-control" id="edit_tournament_name" [(ngModel)]="editScore.tournamentName" name="edit_tournament_name" required>
+            </div>
+            <div class="mb-3">
+              <label for="edit_tournament_date" class="form-label">Tournament Date:</label>
+              <input type="date" class="form-control" id="edit_tournament_date" [(ngModel)]="editScore.tournamentDate" name="edit_tournament_date" required>
+            </div>
+            <div class="mb-3">
+              <label for="edit_league" class="form-label">League:</label>
+              <input type="text" class="form-control" id="edit_league" [(ngModel)]="editScore.league" name="edit_league" required>
+            </div>
+            <div class="mb-3">
+              <label for="edit_tournament_result" class="form-label">Tournament Result:</label>
+              <input type="number" class="form-control" id="edit_tournament_result" [(ngModel)]="editScore.tournamentResult" name="edit_tournament_result" required>
+            </div>
+            <div class="mb-3">
+              <label for="edit_national_ranking" class="form-label">National Ranking:</label>
+              <input type="number" class="form-control" id="edit_national_ranking" [(ngModel)]="editScore.nationalRanking" name="edit_national_ranking" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Update Event</button>
+          </form>
         </div>
       </div>
     </div>
   </div>
-  
+</div>

@@ -1,13 +1,12 @@
 import { TestBed } from '@angular/core/testing';
-
-import { PGDAServicesService } from './pgdaservices.service';
+import { PgdaService } from './pgda.service';
 
 describe('PGDAServicesService', () => {
-  let service: PGDAServicesService;
+  let service: PgdaService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(PGDAServicesService);
+    service = TestBed.inject(PgdaService);
   });
 
   it('should be created', () => {
