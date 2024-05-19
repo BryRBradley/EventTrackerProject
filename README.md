@@ -66,3 +66,6 @@ XHR for the information for my Table.
 
 Screen shot of the finished front end.
 ![Frontend final](https://github.com/BryRBradley/EventTrackerProject/blob/main/PGDATournamentREST/src/main/webapp/code2.png)
+
+Screenshot of the ngFrontend. 
+![ng Frontend](https://github.com/BryRBradley/EventTrackerProject/blob/main/ngScreenshot.png)
