@@ -1,36 +1,77 @@
 :host {
-    display: block;
-    background-image: url('/assets/grass.png');
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center center;
-    min-height: 100vh; /* Ensures the background covers the full height of the viewport */
-  }
-  
-  .container-fluid, .container {
-    background: rgba(255, 255, 255, 0.8); /* Add a semi-transparent background to make text readable */
-    border-radius: 10px;
-    padding: 20px;
-  }
+  display: block;
+  background-image: url('/assets/grass.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  min-height: 100vh;
+}
 
-  .close-btn {
-    font-size: 2rem;
-    font-weight: bold;
-    color: #000;
-    background: none;
-    border: none;
-    cursor: pointer;
-    position: absolute;
-    top: 0;
-    right: 0;
-    padding: 0.5rem;
-  }
-  
-  .close-btn:hover {
-    color: #ff0000;
-  }
-  
-  .modal-header {
-    position: relative;
-  }
-  
+.header-container {
+  text-size-adjust: 150;
+  color: rgb(0, 0, 0);
+  font-weight: bold;
+  font-size: 1.5rem;
+  border-radius: 10px;
+  padding: 20px;
+}
+
+.container-fluid, .container {
+  background: rgba(114, 150, 111, 0.8);
+  border-radius: 10px;
+  padding: 20px;
+}
+
+.close-btn {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #000;
+  background: none;
+  border: none;
+  cursor: pointer;
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  padding: 0.5rem;
+}
+
+.close-btn:hover {
+  color: #ff0000;
+}
+
+.modal-header {
+  font-size: larger;
+  font-weight: bold;
+  text-align: center;
+  position: relative;
+}
+
+.custom-modal-bg {
+  background-color: #f0f0f0;
+  border-radius: 10px;
+}
+
+.d-flex {
+  display: flex;
+}
+
+.flex-column {
+  flex-direction: column;
+}
+
+.align-items-center {
+  align-items: center;
+}
+
+.table tbody tr:nth-child(odd) {
+  background-color: #9dd99b;
+
+}
+
+.table tbody tr:nth-child(even) {
+  background-color: #cadcc6;
+}
+.table thead{
+  background-color: #3a5899;
+  color: rgb(236, 242, 237);
+}

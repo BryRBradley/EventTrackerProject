@@ -1,6 +1,8 @@
-<div class="container-fluid bg-primary py-3 mb-4">
-  <h1 class="text-center text-dark display-1">PDGA Tournament</h1>
-  <img src="assets/pdga_logo_og-image.png" alt="PGDA Logo" class="img-fluid mx-auto d-block" style="max-width: 200px;">
+<div class="container-fluid py-3 mb-4 header-container">
+  <div class="d-flex flex-column align-items-center">
+    <h1 class="text-black display-1">PDGA Tournament</h1>
+    <img src="assets/pdga_logo_og-image.png" alt="PGDA Logo" class="img-fluid" style="max-width: 200px;">
+  </div>
 </div>
 <div class="container mt-5">
   <table id="eventTable" class="table mt-3">
@@ -28,13 +30,13 @@
         <td>{{ score.tournamentResult }}</td>
         <td>{{ score.nationalRanking }}</td>
         <td>
-          <button class="btn btn-sm btn-warning" (click)="edit(score)">Edit</button>
-          <button class="btn btn-sm btn-danger" (click)="deleteScore(score.id)">Delete</button>
+          <button class="btn btn-sm btn-warning rounded" (click)="edit(score)">Edit</button>
+          <button class="btn btn-sm btn-danger rounded" (click)="deleteScore(score.id)">Delete</button>
         </td>
       </tr>
     </tbody>
   </table>
-
+<br>
   <form (ngSubmit)="addScore()">
     <div class="mb-3">
       <label for="score" class="form-label">Score:</label>
@@ -64,13 +66,14 @@
       <label for="national_ranking" class="form-label">National Ranking:</label>
       <input type="number" class="form-control" id="national_ranking" [(ngModel)]="newScore.nationalRanking" name="national_ranking" required>
     </div>
-    <button type="submit" class="btn btn-primary">Create Event</button>
+    <br>
+    <button type="submit" class="btn btn-primary rounded">Create Event</button>
   </form>
 
-  <!-- Edit Modal -->
-  <div *ngIf="showModal" class="modal fade show d-block" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true" style="background-color: rgba(0,0,0,0.5);">
+
+  <div *ngIf="showModal" class="modal fade show d-block" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
     <div class="modal-dialog">
-      <div class="modal-content">
+      <div class="modal-content custom-modal-bg">
         <div class="modal-header">
           <h5 class="modal-title" id="editModalLabel">Edit Event</h5>
           <button type="button" class="close-btn" (click)="closeModal()" aria-label="Close">&times;</button>
@@ -105,7 +108,7 @@
               <label for="edit_national_ranking" class="form-label">National Ranking:</label>
               <input type="number" class="form-control" id="edit_national_ranking" [(ngModel)]="editScore.nationalRanking" name="edit_national_ranking" required>
             </div>
-            <button type="submit" class="btn btn-primary">Update Event</button>
+            <button type="submit" class="btn btn-primary rounded">Update Event</button>
           </form>
         </div>
       </div>
