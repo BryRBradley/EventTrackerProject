@@ -1,0 +1,99 @@
+
+
+    <h1 class="text-center text-dark display-1">PDGA Tournament</h1>
+  <div class="container mt-5">
+    <table id="eventTable" class="table mt-3">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Score</th>
+          <th>Player Name</th>
+          <th>Tournament Name</th>
+          <th>Tournament Date</th>
+          <th>League</th>
+          <th>Tournament Result</th>
+          <th>National Ranking</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+      </tbody>
+    </table>
+  
+    <form id="createForm">
+      <div class="mb-3">
+        <label for="score" class="form-label">Score:</label>
+        <input type="text" class="form-control" id="score" name="score" required>
+      </div>
+      <div class="mb-3">
+        <label for="player_name" class="form-label">Player Name:</label>
+        <input type="text" class="form-control" id="player_name" name="player_name" required>
+      </div>
+      <div class="mb-3">
+        <label for="tournament_name" class="form-label">Tournament Name:</label>
+        <input type="text" class="form-control" id="tournament_name" name="tournament_name" required>
+      </div>
+      <div class="mb-3">
+        <label for="tournament_date" class="form-label">Tournament Date:</label>
+        <input type="date" class="form-control" id="tournament_date" name="tournament_date" required>
+      </div>
+      <div class="mb-3">
+        <label for="league" class="form-label">League:</label>
+        <input type="text" class="form-control" id="league" name="league" required>
+      </div>
+      <div class="mb-3">
+        <label for="tournament_result" class="form-label">Tournament Result:</label>
+        <input type="number" class="form-control" id="tournament_result" name="tournament_result" required>
+      </div>
+      <div class="mb-3">
+        <label for="national_ranking" class="form-label">National Ranking:</label>
+        <input type="number" class="form-control" id="national_ranking" name="national_ranking" required>
+      </div>
+      <button type="submit" class="btn btn-primary">Create Event</button>
+    </form>
+  
+    <div id="editModal" class="modal">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Edit Event</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <form id="editForm">
+              <div class="mb-3">
+                <label for="editScore" class="form-label">Score:</label>
+                <input type="text" class="form-control" id="editScore" name="editScore" required>
+              </div>
+              <div class="mb-3">
+                <label for="editPlayerName" class="form-label">Player Name:</label>
+                <input type="text" class="form-control" id="editPlayerName" name="editPlayerName" required>
+              </div>
+              <div class="mb-3">
+                <label for="editTournamentName" class="form-label">Tournament Name:</label>
+                <input type="text" class="form-control" id="editTournamentName" name="editTournamentName" required>
+              </div>
+              <div class="mb-3">
+                <label for="editTournamentDate" class="form-label">Tournament Date:</label>
+                <input type="date" class="form-control" id="editTournamentDate" name="editTournamentDate" required>
+              </div>
+              <div class="mb-3">
+                <label for="editLeague" class="form-label">League:</label>
+                <input type="text" class="form-control" id="editLeague" name="editLeague" required>
+              </div>
+              <div class="mb-3">
+                <label for="editTournamentResult" class="form-label">Tournament Result:</label>
+                <input type="number" class="form-control" id="editTournamentResult" name="editTournamentResult" required>
+              </div>
+              <div class="mb-3">
+                <label for="editNationalRanking" class="form-label">National Ranking:</label>
+                <input type="number" class="form-control" id="editNationalRanking" name="editNationalRanking" required>
+              </div>
+              <button type="submit" class="btn btn-primary">Update Event</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
