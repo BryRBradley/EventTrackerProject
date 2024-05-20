@@ -1,13 +1,13 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { PGDAScore } from '../pgda-score.model';
+import { PGDAScore} from '../pgda-score.module';
 
 @Injectable({
   providedIn: 'root'
 })
 export class PgdaService {
-  private baseUrl = 'http://localhost:8083/api/pgdaScores';  
+  private baseUrl = 'http://localhost:8083/api/pgdaScores';  // Ensure this matches your backend URL
 
   constructor(private http: HttpClient) { }
 

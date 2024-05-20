@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { PgdaService } from '../../services/pgda.service';
-import { PGDAScore } from '../../pgda-score.model';
+import { PGDAScore} from '../../pgda-score.module';
 
 @Component({
   selector: 'app-pgda',
@@ -12,8 +12,10 @@ export class PGDAComponent implements OnInit {
   newScore: PGDAScore = this.initializeScore();
   editScore: PGDAScore = this.initializeScore();
   showModal: boolean = false;
+  searchTerm: string = '';
+  searchType: string = 'id';
 
-  constructor(private pgdaService: PgdaService) { }
+  constructor(public pgdaService: PgdaService) { }
 
   ngOnInit(): void {
     this.loadScores();
@@ -63,10 +65,12 @@ export class PGDAComponent implements OnInit {
   }
 
   deleteScore(id: number): void {
-    this.pgdaService.deleteScore(id).subscribe(
-      () => this.scores = this.scores.filter(score => score.id !== id),
-      error => console.error(error)
-    );
+    if (window.confirm('Are you sure you want to delete?')) {
+      this.pgdaService.deleteScore(id).subscribe(
+        () => this.scores = this.scores.filter(score => score.id !== id),
+        error => console.error(error)
+      );
+    }
   }
 
   edit(score: PGDAScore): void {
@@ -78,17 +82,34 @@ export class PGDAComponent implements OnInit {
     this.showModal = false;
   }
 
-  findByPlayerName(name: string): void {
-    this.pgdaService.findByPlayerName(name).subscribe(
-      data => this.scores = data,
-      error => console.error(error)
-    );
+  performSearch(): void {
+    switch (this.searchType) {
+      case 'id':
+        if (this.searchTerm) {
+          const id = parseInt(this.searchTerm, 10);
+          this.pgdaService.getScore(id).subscribe(
+            data => this.scores = [data],
+            error => console.error(error)
+          );
+        }
+        break;
+      case 'playerName':
+        this.pgdaService.findByPlayerName(this.searchTerm).subscribe(
+          data => this.scores = data,
+          error => console.error(error)
+        );
+        break;
+      case 'league':
+        this.pgdaService.findByLeague(this.searchTerm).subscribe(
+          data => this.scores = data,
+          error => console.error(error)
+        );
+        break;
+    }
   }
 
-  findByLeague(league: string): void {
-    this.pgdaService.findByLeague(league).subscribe(
-      data => this.scores = data,
-      error => console.error(error)
-    );
+  resetSearch(): void {
+    this.searchTerm = '';
+    this.loadScores();
   }
 }

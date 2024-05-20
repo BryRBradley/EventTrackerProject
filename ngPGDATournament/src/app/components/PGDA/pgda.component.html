@@ -1,10 +1,27 @@
 <div class="container-fluid py-3 mb-4 header-container">
   <div class="d-flex flex-column align-items-center">
-    <h1 class="text-black display-1">PDGA Tournament</h1>
+    <h1 class="text-white display-1">PDGA Tournament</h1>
     <img src="assets/pdga_logo_og-image.png" alt="PGDA Logo" class="img-fluid" style="max-width: 200px;">
   </div>
 </div>
 <div class="container mt-5">
+  <div class="row mb-3">
+    <div class="col-md-4">
+      <input type="text" class="form-control" [(ngModel)]="searchTerm" placeholder="Search...">
+    </div>
+    <div class="col-md-4">
+      <select class="form-control" [(ngModel)]="searchType">
+        <option value="id">Search by ID</option>
+        <option value="playerName">Search by Player Name</option>
+        <option value="league">Search by League</option>
+      </select>
+    </div>
+    <div class="col-md-4">
+      <button class="btn btn-primary me-2" (click)="performSearch()">Search</button>
+      <button class="btn btn-secondary" (click)="resetSearch()">Back</button>
+    </div>
+  </div>
+
   <table id="eventTable" class="table mt-3">
     <thead>
       <tr>
@@ -30,13 +47,13 @@
         <td>{{ score.tournamentResult }}</td>
         <td>{{ score.nationalRanking }}</td>
         <td>
-          <button class="btn btn-sm btn-warning rounded" (click)="edit(score)">Edit</button>
-          <button class="btn btn-sm btn-danger rounded" (click)="deleteScore(score.id)">Delete</button>
+          <button class="btn btn-sm btn-primary rounded" (click)="edit(score)">Edit</button>
+          <button class="btn btn-sm btn-warning rounded" (click)="deleteScore(score.id)">Delete</button>
         </td>
       </tr>
     </tbody>
   </table>
-<br>
+
   <form (ngSubmit)="addScore()">
     <div class="mb-3">
       <label for="score" class="form-label">Score:</label>
@@ -66,11 +83,10 @@
       <label for="national_ranking" class="form-label">National Ranking:</label>
       <input type="number" class="form-control" id="national_ranking" [(ngModel)]="newScore.nationalRanking" name="national_ranking" required>
     </div>
-    <br>
     <button type="submit" class="btn btn-primary rounded">Create Event</button>
   </form>
 
-
+  <!-- Edit Modal -->
   <div *ngIf="showModal" class="modal fade show d-block" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content custom-modal-bg">
@@ -84,27 +100,27 @@
               <label for="edit_score" class="form-label">Score:</label>
               <input type="number" class="form-control" id="edit_score" [(ngModel)]="editScore.score" name="edit_score" required>
             </div>
-            <div class="mb-3">
+            <div class="mb-2">
               <label for="edit_player_name" class="form-label">Player Name:</label>
               <input type="text" class="form-control" id="edit_player_name" [(ngModel)]="editScore.playerName" name="edit_player_name" required>
             </div>
-            <div class="mb-3">
+            <div class="mb-2">
               <label for="edit_tournament_name" class="form-label">Tournament Name:</label>
               <input type="text" class="form-control" id="edit_tournament_name" [(ngModel)]="editScore.tournamentName" name="edit_tournament_name" required>
             </div>
-            <div class="mb-3">
+            <div class="mb-2">
               <label for="edit_tournament_date" class="form-label">Tournament Date:</label>
               <input type="date" class="form-control" id="edit_tournament_date" [(ngModel)]="editScore.tournamentDate" name="edit_tournament_date" required>
             </div>
-            <div class="mb-3">
+            <div class="mb-2">
               <label for="edit_league" class="form-label">League:</label>
               <input type="text" class="form-control" id="edit_league" [(ngModel)]="editScore.league" name="edit_league" required>
             </div>
-            <div class="mb-3">
+            <div class="mb-2">
               <label for="edit_tournament_result" class="form-label">Tournament Result:</label>
               <input type="number" class="form-control" id="edit_tournament_result" [(ngModel)]="editScore.tournamentResult" name="edit_tournament_result" required>
             </div>
-            <div class="mb-3">
+            <div class="mb-2">
               <label for="edit_national_ranking" class="form-label">National Ranking:</label>
               <input type="number" class="form-control" id="edit_national_ranking" [(ngModel)]="editScore.nationalRanking" name="edit_national_ranking" required>
             </div>
