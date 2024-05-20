@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { PgdaService } from '../../services/pgda.service';
-import { PGDAScore} from '../../pgda-score.module';
+import { PGDAScore } from '../../pgda-score.module';
 
 @Component({
   selector: 'app-pgda',

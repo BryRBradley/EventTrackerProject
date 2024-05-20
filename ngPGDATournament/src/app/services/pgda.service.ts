@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { PGDAScore} from '../pgda-score.module';
+import { PGDAScore } from '../pgda-score.module';
 
 @Injectable({
   providedIn: 'root'

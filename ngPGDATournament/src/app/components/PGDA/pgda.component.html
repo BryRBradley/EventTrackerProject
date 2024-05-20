@@ -47,8 +47,8 @@
         <td>{{ score.tournamentResult }}</td>
         <td>{{ score.nationalRanking }}</td>
         <td>
-          <button class="btn btn-sm btn-primary rounded" (click)="edit(score)">Edit</button>
-          <button class="btn btn-sm btn-warning rounded" (click)="deleteScore(score.id)">Delete</button>
+          <button class="btn btn-sm btn-warning rounded" (click)="edit(score)">Edit</button>
+          <button class="btn btn-sm btn-danger rounded" (click)="deleteScore(score.id)">Delete</button>
         </td>
       </tr>
     </tbody>
@@ -96,7 +96,7 @@
         </div>
         <div class="modal-body">
           <form (ngSubmit)="updateScore()">
-            <div class="mb-3">
+            <div class="mb-2">
               <label for="edit_score" class="form-label">Score:</label>
               <input type="number" class="form-control" id="edit_score" [(ngModel)]="editScore.score" name="edit_score" required>
             </div>
